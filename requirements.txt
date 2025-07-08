@@ -1,17 +1,81 @@
+# Core framework dependencies
 dbt-core
 dbt-sqlserver
 pyodbc
 pydantic
-jina
-qdrant-client
-neo4j
-google-adk
-requests
-great_expectations
-streamlit
-prometheus_client
-pytest
-langchain
-openrouter-client
-mcp-agent
 python-dotenv
+
+# RAG and embeddings
+jina[standard]>=3.28.0
+sentence-transformers
+transformers>=4.40.0
+torch>=2.0.0
+torchvision
+datasets
+
+# LLM serving
+vllm>=0.6.0
+ray[serve]
+accelerate
+
+# Vector database
+pymilvus>=2.4.0
+qdrant-client
+
+# Graph database  
+neo4j>=5.15.0
+py2neo
+
+# Agent framework
+autogen-agentchat>=0.4.0
+langchain>=0.3.0
+langchain-community
+langgraph
+
+# MCP servers
+mcp-agent
+pydantic-settings
+
+# API and web interface
+fastapi>=0.100.0
+uvicorn[standard]
+streamlit>=1.30.0
+websockets
+pydantic-settings
+
+# Utilities
+requests>=2.31.0
+aiohttp
+asyncio
+httpx
+tenacity
+tiktoken
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
+pillow>=10.0.0
+opencv-python
+python-multipart
+pypdf2
+python-docx
+openpyxl
+
+# Monitoring and logging
+prometheus_client
+structlog
+rich
+tqdm
+
+# Testing
+pytest>=7.0.0
+pytest-asyncio
+pytest-mock
+httpx
+great_expectations
+
+# Development
+black
+ruff
+mypy
+pre-commit
