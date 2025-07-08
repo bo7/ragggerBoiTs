@@ -37,7 +37,6 @@ async def demo_rag_system():
     
     # Initialize pipeline
     pipeline = MultiDatabasePipeline()
-    rag_engine = RAGEngine()
     
     try:
         # Step 1: Initialize system
@@ -45,6 +44,12 @@ async def demo_rag_system():
         if not await pipeline.initialize_pipeline():
             print("❌ Failed to initialize pipeline")
             return
+        
+        # Initialize RAG engine with the same vector and graph stores as the pipeline
+        rag_engine = RAGEngine(
+            vector_store=pipeline.vector_store,
+            graph_store=pipeline.graph_store
+        )
         
         if not await rag_engine.initialize():
             print("❌ Failed to initialize RAG engine")

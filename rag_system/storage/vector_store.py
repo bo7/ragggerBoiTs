@@ -102,7 +102,10 @@ class MilvusVectorStore:
             # Check if collection already exists
             if self.utility.has_collection(collection_name):
                 logger.info(f"Collection {collection_name} already exists")
-                self.collections[collection_name] = self.Collection(collection_name)
+                collection = self.Collection(collection_name)
+                # Load the existing collection to make it available for search
+                collection.load()
+                self.collections[collection_name] = collection
                 return True
             
             # Define schema

@@ -50,7 +50,7 @@ class CompleteRAGTester:
     
     def __init__(self):
         self.pipeline = MultiDatabasePipeline()
-        self.rag_engine = RAGEngine()
+        self.rag_engine = None  # Will be initialized after pipeline
         self.test_results = {}
         self.start_time = None
         
@@ -107,6 +107,12 @@ class CompleteRAGTester:
             if not await self.pipeline.initialize_pipeline():
                 print("❌ Failed to initialize pipeline")
                 return False
+            
+            # Initialize RAG engine with the same vector and graph stores
+            self.rag_engine = RAGEngine(
+                vector_store=self.pipeline.vector_store,
+                graph_store=self.pipeline.graph_store
+            )
             
             # Clear vector database
             print("🗑️  Clearing vector database...")

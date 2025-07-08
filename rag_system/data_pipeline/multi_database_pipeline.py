@@ -400,8 +400,41 @@ class MultiDatabasePipeline:
             # Get column names
             columns = [desc[0] for desc in cursor.description]
             
-            # Fetch data
-            rows = cursor.fetchall()
+            # Fetch data - handle SQL type -151 errors
+            try:
+                rows = cursor.fetchall()
+            except Exception as fetch_error:
+                if "SQL type -151" in str(fetch_error):
+                    logger.warning(f"SQL type -151 error in {table_info.schema_name}.{table_info.table_name}, trying alternative query")
+                    # Try with specific columns, excluding problematic spatial types
+                    try:
+                        # Get column info to identify problematic columns
+                        column_info_query = f"""
+                        SELECT COLUMN_NAME, DATA_TYPE 
+                        FROM INFORMATION_SCHEMA.COLUMNS 
+                        WHERE TABLE_SCHEMA = '{table_info.schema_name}' 
+                        AND TABLE_NAME = '{table_info.table_name}'
+                        AND DATA_TYPE NOT IN ('geometry', 'geography', 'hierarchyid', 'sql_variant')
+                        """
+                        cursor.execute(column_info_query)
+                        safe_columns = [row[0] for row in cursor.fetchall()]
+                        
+                        if safe_columns:
+                            safe_columns_str = ', '.join(f'[{col}]' for col in safe_columns)
+                            safe_query = f"SELECT TOP {limit} {safe_columns_str} FROM [{table_info.schema_name}].[{table_info.table_name}]"
+                            cursor.execute(safe_query)
+                            columns = safe_columns
+                            rows = cursor.fetchall()
+                        else:
+                            logger.warning(f"No safe columns found for {table_info.schema_name}.{table_info.table_name}")
+                            conn.close()
+                            return []
+                    except Exception as safe_error:
+                        logger.error(f"Safe query also failed for {table_info.schema_name}.{table_info.table_name}: {safe_error}")
+                        conn.close()
+                        return []
+                else:
+                    raise fetch_error
             
             # Convert to dict list
             table_data = []

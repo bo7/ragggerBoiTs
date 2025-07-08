@@ -116,4 +116,4 @@ This allows `generate_dbt_models.py` to read the raw metadata outside the main m
 
 ---
 
-> _Generated on July 8, 2025 by your AI assistant_
+> _Generated on July 8, 2025 
