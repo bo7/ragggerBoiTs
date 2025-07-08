@@ -1,0 +1,24 @@
+name: rag-poc
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pyodbc
+  - dbt-core
+  - dbt-sqlserver
+  - pydantic
+  - jina-client
+  - qdrant-client
+  - neo4j
+  - google-adk
+  - requests
+  - great_expectations
+  - streamlit
+  - prometheus_client
+  - pytest
+  - pip
+  - pip:
+      - langchain
+      - openrouter-client
+      - mcp-agent

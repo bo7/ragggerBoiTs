@@ -1,0 +1,3168 @@
+{
+  "tables": [
+    {
+      "schema": "Integration",
+      "name": "ETL Cutoff",
+      "columns": [
+        {
+          "name": "Table Name",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Cutoff Time",
+          "data_type": "datetime2",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": [
+        {
+          "Table Name": "City",
+          "Cutoff Time": "2016-06-06 12:31:17"
+        },
+        {
+          "Table Name": "Customer",
+          "Cutoff Time": "2016-06-06 12:31:17"
+        },
+        {
+          "Table Name": "Date",
+          "Cutoff Time": "2012-12-31 00:00:00"
+        },
+        {
+          "Table Name": "Employee",
+          "Cutoff Time": "2016-06-06 12:31:17"
+        },
+        {
+          "Table Name": "Movement",
+          "Cutoff Time": "2016-06-06 12:31:17"
+        }
+      ]
+    },
+    {
+      "schema": "Integration",
+      "name": "Lineage",
+      "columns": [
+        {
+          "name": "Lineage Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Data Load Started",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Table Name",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Data Load Completed",
+          "data_type": "datetime2",
+          "is_nullable": true
+        },
+        {
+          "name": "Was Successful",
+          "data_type": "bit",
+          "is_nullable": false
+        },
+        {
+          "name": "Source System Cutoff Time",
+          "data_type": "datetime2",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": [
+        {
+          "Lineage Key": 1,
+          "Data Load Started": "2016-06-06 12:36:16.581470",
+          "Table Name": "City",
+          "Data Load Completed": "2016-06-06 12:36:49.059214",
+          "Was Successful": true,
+          "Source System Cutoff Time": "2016-06-06 12:31:17"
+        },
+        {
+          "Lineage Key": 2,
+          "Data Load Started": "2016-06-06 12:36:49.074836",
+          "Table Name": "Customer",
+          "Data Load Completed": "2016-06-06 12:36:49.715451",
+          "Was Successful": true,
+          "Source System Cutoff Time": "2016-06-06 12:31:17"
+        },
+        {
+          "Lineage Key": 3,
+          "Data Load Started": "2016-06-06 12:36:49.731077",
+          "Table Name": "Employee",
+          "Data Load Completed": "2016-06-06 12:36:49.965478",
+          "Was Successful": true,
+          "Source System Cutoff Time": "2016-06-06 12:31:17"
+        },
+        {
+          "Lineage Key": 4,
+          "Data Load Started": "2016-06-06 12:36:49.981078",
+          "Table Name": "Payment Method",
+          "Data Load Completed": "2016-06-06 12:36:50.074807",
+          "Was Successful": true,
+          "Source System Cutoff Time": "2016-06-06 12:31:17"
+        },
+        {
+          "Lineage Key": 5,
+          "Data Load Started": "2016-06-06 12:36:50.074807",
+          "Table Name": "Stock Item",
+          "Data Load Completed": "2016-06-06 12:36:50.434203",
+          "Was Successful": true,
+          "Source System Cutoff Time": "2016-06-06 12:31:17"
+        }
+      ]
+    },
+    {
+      "schema": "Integration",
+      "name": "Customer_Staging",
+      "columns": [
+        {
+          "name": "Customer Staging Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "WWI Customer ID",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Customer",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Bill To Customer",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Category",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Buying Group",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Primary Contact",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Postal Code",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid From",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid To",
+          "data_type": "datetime2",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": []
+    },
+    {
+      "schema": "Integration",
+      "name": "Employee_Staging",
+      "columns": [
+        {
+          "name": "Employee Staging Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "WWI Employee ID",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Employee",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Preferred Name",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Is Salesperson",
+          "data_type": "bit",
+          "is_nullable": false
+        },
+        {
+          "name": "Photo",
+          "data_type": "varbinary",
+          "is_nullable": true
+        },
+        {
+          "name": "Valid From",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid To",
+          "data_type": "datetime2",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": []
+    },
+    {
+      "schema": "Integration",
+      "name": "Movement_Staging",
+      "columns": [
+        {
+          "name": "Movement Staging Key",
+          "data_type": "bigint",
+          "is_nullable": false
+        },
+        {
+          "name": "Date Key",
+          "data_type": "date",
+          "is_nullable": true
+        },
+        {
+          "name": "Stock Item Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Customer Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Supplier Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Transaction Type Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Stock Item Transaction ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Invoice ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Purchase Order ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Quantity",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Stock Item ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Customer ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Supplier ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Transaction Type ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Last Modifed When",
+          "data_type": "datetime2",
+          "is_nullable": true
+        }
+      ],
+      "sample_rows": []
+    },
+    {
+      "schema": "Integration",
+      "name": "Order_Staging",
+      "columns": [
+        {
+          "name": "Order Staging Key",
+          "data_type": "bigint",
+          "is_nullable": false
+        },
+        {
+          "name": "City Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Customer Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Stock Item Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Order Date Key",
+          "data_type": "date",
+          "is_nullable": true
+        },
+        {
+          "name": "Picked Date Key",
+          "data_type": "date",
+          "is_nullable": true
+        },
+        {
+          "name": "Salesperson Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Picker Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Order ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Backorder ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Description",
+          "data_type": "nvarchar",
+          "is_nullable": true
+        },
+        {
+          "name": "Package",
+          "data_type": "nvarchar",
+          "is_nullable": true
+        },
+        {
+          "name": "Quantity",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Unit Price",
+          "data_type": "decimal",
+          "is_nullable": true
+        },
+        {
+          "name": "Tax Rate",
+          "data_type": "decimal",
+          "is_nullable": true
+        },
+        {
+          "name": "Total Excluding Tax",
+          "data_type": "decimal",
+          "is_nullable": true
+        },
+        {
+          "name": "Tax Amount",
+          "data_type": "decimal",
+          "is_nullable": true
+        },
+        {
+          "name": "Total Including Tax",
+          "data_type": "decimal",
+          "is_nullable": true
+        },
+        {
+          "name": "Lineage Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI City ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Customer ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Stock Item ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Salesperson ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Picker ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Last Modified When",
+          "data_type": "datetime2",
+          "is_nullable": true
+        }
+      ],
+      "sample_rows": []
+    },
+    {
+      "schema": "Integration",
+      "name": "PaymentMethod_Staging",
+      "columns": [
+        {
+          "name": "Payment Method Staging Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "WWI Payment Method ID",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Payment Method",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid From",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid To",
+          "data_type": "datetime2",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": []
+    },
+    {
+      "schema": "Dimension",
+      "name": "City",
+      "columns": [
+        {
+          "name": "City Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "WWI City ID",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "City",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "State Province",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Country",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Continent",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Sales Territory",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Region",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Subregion",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Location",
+          "data_type": "geography",
+          "is_nullable": true
+        },
+        {
+          "name": "Latest Recorded Population",
+          "data_type": "bigint",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid From",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid To",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Lineage Key",
+          "data_type": "int",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": [
+        {
+          "City Key": 0,
+          "WWI City ID": 0,
+          "City": "Unknown",
+          "State Province": "N/A",
+          "Country": "N/A",
+          "Continent": "N/A",
+          "Sales Territory": "N/A",
+          "Region": "N/A",
+          "Subregion": "N/A",
+          "Location": null,
+          "Latest Recorded Population": 0,
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "9999-12-31 23:59:59.999999",
+          "Lineage Key": 0
+        },
+        {
+          "City Key": 1,
+          "WWI City ID": 5450,
+          "City": "Carrollton",
+          "State Province": "New York",
+          "Country": "United States",
+          "Continent": "North America",
+          "Sales Territory": "Mideast",
+          "Region": "Americas",
+          "Subregion": "Northern America",
+          "Location": "POINT (-78.651695 42.1083969)",
+          "Latest Recorded Population": 0,
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "2013-01-01 00:02:00",
+          "Lineage Key": 1
+        },
+        {
+          "City Key": 2,
+          "WWI City ID": 5451,
+          "City": "Carrollton",
+          "State Province": "Virginia",
+          "Country": "United States",
+          "Continent": "North America",
+          "Sales Territory": "Southeast",
+          "Region": "Americas",
+          "Subregion": "Northern America",
+          "Location": "POINT (-76.5605078 36.9468152)",
+          "Latest Recorded Population": 4574,
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "2013-01-01 00:03:00",
+          "Lineage Key": 1
+        },
+        {
+          "City Key": 3,
+          "WWI City ID": 5452,
+          "City": "Carrollton",
+          "State Province": "Illinois",
+          "Country": "United States",
+          "Continent": "North America",
+          "Sales Territory": "Great Lakes",
+          "Region": "Americas",
+          "Subregion": "Northern America",
+          "Location": "POINT (-90.4070632 39.3022693)",
+          "Latest Recorded Population": 2484,
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "2013-01-01 00:05:00",
+          "Lineage Key": 1
+        },
+        {
+          "City Key": 4,
+          "WWI City ID": 5453,
+          "City": "Carrollton",
+          "State Province": "Missouri",
+          "Country": "United States",
+          "Continent": "North America",
+          "Sales Territory": "Plains",
+          "Region": "Americas",
+          "Subregion": "Northern America",
+          "Location": "POINT (-93.4957675 39.3583539)",
+          "Latest Recorded Population": 3784,
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "2013-01-01 00:03:00",
+          "Lineage Key": 1
+        }
+      ]
+    },
+    {
+      "schema": "Integration",
+      "name": "Purchase_Staging",
+      "columns": [
+        {
+          "name": "Purchase Staging Key",
+          "data_type": "bigint",
+          "is_nullable": false
+        },
+        {
+          "name": "Date Key",
+          "data_type": "date",
+          "is_nullable": true
+        },
+        {
+          "name": "Supplier Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Stock Item Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Purchase Order ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Ordered Outers",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Ordered Quantity",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Received Outers",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Package",
+          "data_type": "nvarchar",
+          "is_nullable": true
+        },
+        {
+          "name": "Is Order Finalized",
+          "data_type": "bit",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Supplier ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Stock Item ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Last Modified When",
+          "data_type": "datetime2",
+          "is_nullable": true
+        }
+      ],
+      "sample_rows": []
+    },
+    {
+      "schema": "Dimension",
+      "name": "Customer",
+      "columns": [
+        {
+          "name": "Customer Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "WWI Customer ID",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Customer",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Bill To Customer",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Category",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Buying Group",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Primary Contact",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Postal Code",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid From",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid To",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Lineage Key",
+          "data_type": "int",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": [
+        {
+          "Customer Key": 0,
+          "WWI Customer ID": 0,
+          "Customer": "Unknown",
+          "Bill To Customer": "N/A",
+          "Category": "N/A",
+          "Buying Group": "N/A",
+          "Primary Contact": "N/A",
+          "Postal Code": "N/A",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "9999-12-31 23:59:59.999999",
+          "Lineage Key": 0
+        },
+        {
+          "Customer Key": 1,
+          "WWI Customer ID": 1,
+          "Customer": "Tailspin Toys (Head Office)",
+          "Bill To Customer": "Tailspin Toys (Head Office)",
+          "Category": "Novelty Shop",
+          "Buying Group": "Tailspin Toys",
+          "Primary Contact": "Waldemar Fisar",
+          "Postal Code": "90410",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "9999-12-31 23:59:59.999999",
+          "Lineage Key": 2
+        },
+        {
+          "Customer Key": 2,
+          "WWI Customer ID": 2,
+          "Customer": "Tailspin Toys (Sylvanite, MT)",
+          "Bill To Customer": "Tailspin Toys (Head Office)",
+          "Category": "Novelty Shop",
+          "Buying Group": "Tailspin Toys",
+          "Primary Contact": "Lorena Cindric",
+          "Postal Code": "90216",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "9999-12-31 23:59:59.999999",
+          "Lineage Key": 2
+        },
+        {
+          "Customer Key": 3,
+          "WWI Customer ID": 3,
+          "Customer": "Tailspin Toys (Peeples Valley, AZ)",
+          "Bill To Customer": "Tailspin Toys (Head Office)",
+          "Category": "Novelty Shop",
+          "Buying Group": "Tailspin Toys",
+          "Primary Contact": "Bhaargav Rambhatla",
+          "Postal Code": "90205",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "9999-12-31 23:59:59.999999",
+          "Lineage Key": 2
+        },
+        {
+          "Customer Key": 4,
+          "WWI Customer ID": 4,
+          "Customer": "Tailspin Toys (Medicine Lodge, KS)",
+          "Bill To Customer": "Tailspin Toys (Head Office)",
+          "Category": "Novelty Shop",
+          "Buying Group": "Tailspin Toys",
+          "Primary Contact": "Daniel Roman",
+          "Postal Code": "90152",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "9999-12-31 23:59:59.999999",
+          "Lineage Key": 2
+        }
+      ]
+    },
+    {
+      "schema": "Integration",
+      "name": "Sale_Staging",
+      "columns": [
+        {
+          "name": "Sale Staging Key",
+          "data_type": "bigint",
+          "is_nullable": false
+        },
+        {
+          "name": "City Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Customer Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Bill To Customer Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Stock Item Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Invoice Date Key",
+          "data_type": "date",
+          "is_nullable": true
+        },
+        {
+          "name": "Delivery Date Key",
+          "data_type": "date",
+          "is_nullable": true
+        },
+        {
+          "name": "Salesperson Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Invoice ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Description",
+          "data_type": "nvarchar",
+          "is_nullable": true
+        },
+        {
+          "name": "Package",
+          "data_type": "nvarchar",
+          "is_nullable": true
+        },
+        {
+          "name": "Quantity",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Unit Price",
+          "data_type": "decimal",
+          "is_nullable": true
+        },
+        {
+          "name": "Tax Rate",
+          "data_type": "decimal",
+          "is_nullable": true
+        },
+        {
+          "name": "Total Excluding Tax",
+          "data_type": "decimal",
+          "is_nullable": true
+        },
+        {
+          "name": "Tax Amount",
+          "data_type": "decimal",
+          "is_nullable": true
+        },
+        {
+          "name": "Profit",
+          "data_type": "decimal",
+          "is_nullable": true
+        },
+        {
+          "name": "Total Including Tax",
+          "data_type": "decimal",
+          "is_nullable": true
+        },
+        {
+          "name": "Total Dry Items",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Total Chiller Items",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI City ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Customer ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Bill To Customer ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Stock Item ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Salesperson ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Last Modified When",
+          "data_type": "datetime2",
+          "is_nullable": true
+        }
+      ],
+      "sample_rows": []
+    },
+    {
+      "schema": "Integration",
+      "name": "StockHolding_Staging",
+      "columns": [
+        {
+          "name": "Stock Holding Staging Key",
+          "data_type": "bigint",
+          "is_nullable": false
+        },
+        {
+          "name": "Stock Item Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Quantity On Hand",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Bin Location",
+          "data_type": "nvarchar",
+          "is_nullable": true
+        },
+        {
+          "name": "Last Stocktake Quantity",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Last Cost Price",
+          "data_type": "decimal",
+          "is_nullable": true
+        },
+        {
+          "name": "Reorder Level",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Target Stock Level",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Stock Item ID",
+          "data_type": "int",
+          "is_nullable": true
+        }
+      ],
+      "sample_rows": []
+    },
+    {
+      "schema": "Dimension",
+      "name": "Date",
+      "columns": [
+        {
+          "name": "Date",
+          "data_type": "date",
+          "is_nullable": false
+        },
+        {
+          "name": "Day Number",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Day",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Month",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Short Month",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Calendar Month Number",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Calendar Month Label",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Calendar Year",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Calendar Year Label",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Fiscal Month Number",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Fiscal Month Label",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Fiscal Year",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Fiscal Year Label",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "ISO Week Number",
+          "data_type": "int",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": [
+        {
+          "Date": "2013-01-01",
+          "Day Number": 1,
+          "Day": "1",
+          "Month": "January",
+          "Short Month": "Jan",
+          "Calendar Month Number": 1,
+          "Calendar Month Label": "CY2013-Jan",
+          "Calendar Year": 2013,
+          "Calendar Year Label": "CY2013",
+          "Fiscal Month Number": 3,
+          "Fiscal Month Label": "FY2013-Jan",
+          "Fiscal Year": 2013,
+          "Fiscal Year Label": "FY2013",
+          "ISO Week Number": 1
+        },
+        {
+          "Date": "2013-01-02",
+          "Day Number": 2,
+          "Day": "2",
+          "Month": "January",
+          "Short Month": "Jan",
+          "Calendar Month Number": 1,
+          "Calendar Month Label": "CY2013-Jan",
+          "Calendar Year": 2013,
+          "Calendar Year Label": "CY2013",
+          "Fiscal Month Number": 3,
+          "Fiscal Month Label": "FY2013-Jan",
+          "Fiscal Year": 2013,
+          "Fiscal Year Label": "FY2013",
+          "ISO Week Number": 1
+        },
+        {
+          "Date": "2013-01-03",
+          "Day Number": 3,
+          "Day": "3",
+          "Month": "January",
+          "Short Month": "Jan",
+          "Calendar Month Number": 1,
+          "Calendar Month Label": "CY2013-Jan",
+          "Calendar Year": 2013,
+          "Calendar Year Label": "CY2013",
+          "Fiscal Month Number": 3,
+          "Fiscal Month Label": "FY2013-Jan",
+          "Fiscal Year": 2013,
+          "Fiscal Year Label": "FY2013",
+          "ISO Week Number": 1
+        },
+        {
+          "Date": "2013-01-04",
+          "Day Number": 4,
+          "Day": "4",
+          "Month": "January",
+          "Short Month": "Jan",
+          "Calendar Month Number": 1,
+          "Calendar Month Label": "CY2013-Jan",
+          "Calendar Year": 2013,
+          "Calendar Year Label": "CY2013",
+          "Fiscal Month Number": 3,
+          "Fiscal Month Label": "FY2013-Jan",
+          "Fiscal Year": 2013,
+          "Fiscal Year Label": "FY2013",
+          "ISO Week Number": 1
+        },
+        {
+          "Date": "2013-01-05",
+          "Day Number": 5,
+          "Day": "5",
+          "Month": "January",
+          "Short Month": "Jan",
+          "Calendar Month Number": 1,
+          "Calendar Month Label": "CY2013-Jan",
+          "Calendar Year": 2013,
+          "Calendar Year Label": "CY2013",
+          "Fiscal Month Number": 3,
+          "Fiscal Month Label": "FY2013-Jan",
+          "Fiscal Year": 2013,
+          "Fiscal Year Label": "FY2013",
+          "ISO Week Number": 1
+        }
+      ]
+    },
+    {
+      "schema": "Integration",
+      "name": "StockItem_Staging",
+      "columns": [
+        {
+          "name": "Stock Item Staging Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "WWI Stock Item ID",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Stock Item",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Color",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Selling Package",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Buying Package",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Brand",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Size",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Lead Time Days",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Quantity Per Outer",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Is Chiller Stock",
+          "data_type": "bit",
+          "is_nullable": false
+        },
+        {
+          "name": "Barcode",
+          "data_type": "nvarchar",
+          "is_nullable": true
+        },
+        {
+          "name": "Tax Rate",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Unit Price",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Recommended Retail Price",
+          "data_type": "decimal",
+          "is_nullable": true
+        },
+        {
+          "name": "Typical Weight Per Unit",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Photo",
+          "data_type": "varbinary",
+          "is_nullable": true
+        },
+        {
+          "name": "Valid From",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid To",
+          "data_type": "datetime2",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": []
+    },
+    {
+      "schema": "Dimension",
+      "name": "Employee",
+      "columns": [
+        {
+          "name": "Employee Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "WWI Employee ID",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Employee",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Preferred Name",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Is Salesperson",
+          "data_type": "bit",
+          "is_nullable": false
+        },
+        {
+          "name": "Photo",
+          "data_type": "varbinary",
+          "is_nullable": true
+        },
+        {
+          "name": "Valid From",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid To",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Lineage Key",
+          "data_type": "int",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": [
+        {
+          "Employee Key": 0,
+          "WWI Employee ID": 0,
+          "Employee": "Unknown",
+          "Preferred Name": "N/A",
+          "Is Salesperson": false,
+          "Photo": null,
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "9999-12-31 23:59:59.999999",
+          "Lineage Key": 0
+        },
+        {
+          "Employee Key": 1,
+          "WWI Employee ID": 14,
+          "Employee": "Lily Code",
+          "Preferred Name": "Lily",
+          "Is Salesperson": true,
+          "Photo": null,
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "2013-01-01 08:00:00",
+          "Lineage Key": 3
+        },
+        {
+          "Employee Key": 2,
+          "WWI Employee ID": 4,
+          "Employee": "Isabella Rupp",
+          "Preferred Name": "Isabella",
+          "Is Salesperson": false,
+          "Photo": null,
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "2013-01-01 08:00:00",
+          "Lineage Key": 3
+        },
+        {
+          "Employee Key": 3,
+          "WWI Employee ID": 11,
+          "Employee": "Ethan Onslow",
+          "Preferred Name": "Ethan",
+          "Is Salesperson": false,
+          "Photo": null,
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "2013-01-04 08:00:00",
+          "Lineage Key": 3
+        },
+        {
+          "Employee Key": 4,
+          "WWI Employee ID": 7,
+          "Employee": "Amy Trefl",
+          "Preferred Name": "Amy",
+          "Is Salesperson": true,
+          "Photo": null,
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "2013-01-05 08:00:00",
+          "Lineage Key": 3
+        }
+      ]
+    },
+    {
+      "schema": "Integration",
+      "name": "Supplier_Staging",
+      "columns": [
+        {
+          "name": "Supplier Staging Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "WWI Supplier ID",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Supplier",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Category",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Primary Contact",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Supplier Reference",
+          "data_type": "nvarchar",
+          "is_nullable": true
+        },
+        {
+          "name": "Payment Days",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Postal Code",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid From",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid To",
+          "data_type": "datetime2",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": []
+    },
+    {
+      "schema": "Dimension",
+      "name": "Payment Method",
+      "columns": [
+        {
+          "name": "Payment Method Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "WWI Payment Method ID",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Payment Method",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid From",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid To",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Lineage Key",
+          "data_type": "int",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": [
+        {
+          "Payment Method Key": 0,
+          "WWI Payment Method ID": 0,
+          "Payment Method": "Unknown",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "9999-12-31 23:59:59.999999",
+          "Lineage Key": 0
+        },
+        {
+          "Payment Method Key": 1,
+          "WWI Payment Method ID": 3,
+          "Payment Method": "Credit Card",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "2016-01-01 16:00:00",
+          "Lineage Key": 4
+        },
+        {
+          "Payment Method Key": 2,
+          "WWI Payment Method ID": 1,
+          "Payment Method": "Cash",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "9999-12-31 23:59:59.999999",
+          "Lineage Key": 4
+        },
+        {
+          "Payment Method Key": 3,
+          "WWI Payment Method ID": 2,
+          "Payment Method": "Check",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "9999-12-31 23:59:59.999999",
+          "Lineage Key": 4
+        },
+        {
+          "Payment Method Key": 4,
+          "WWI Payment Method ID": 4,
+          "Payment Method": "EFT",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "9999-12-31 23:59:59.999999",
+          "Lineage Key": 4
+        }
+      ]
+    },
+    {
+      "schema": "Integration",
+      "name": "Transaction_Staging",
+      "columns": [
+        {
+          "name": "Transaction Staging Key",
+          "data_type": "bigint",
+          "is_nullable": false
+        },
+        {
+          "name": "Date Key",
+          "data_type": "date",
+          "is_nullable": true
+        },
+        {
+          "name": "Customer Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Bill To Customer Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Supplier Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Transaction Type Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Payment Method Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Customer Transaction ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Supplier Transaction ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Invoice ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Purchase Order ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Supplier Invoice Number",
+          "data_type": "nvarchar",
+          "is_nullable": true
+        },
+        {
+          "name": "Total Excluding Tax",
+          "data_type": "decimal",
+          "is_nullable": true
+        },
+        {
+          "name": "Tax Amount",
+          "data_type": "decimal",
+          "is_nullable": true
+        },
+        {
+          "name": "Total Including Tax",
+          "data_type": "decimal",
+          "is_nullable": true
+        },
+        {
+          "name": "Outstanding Balance",
+          "data_type": "decimal",
+          "is_nullable": true
+        },
+        {
+          "name": "Is Finalized",
+          "data_type": "bit",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Customer ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Bill To Customer ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Supplier ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Transaction Type ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Payment Method ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Last Modified When",
+          "data_type": "datetime2",
+          "is_nullable": true
+        }
+      ],
+      "sample_rows": []
+    },
+    {
+      "schema": "Integration",
+      "name": "TransactionType_Staging",
+      "columns": [
+        {
+          "name": "Transaction Type Staging Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "WWI Transaction Type ID",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Transaction Type",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid From",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid To",
+          "data_type": "datetime2",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": []
+    },
+    {
+      "schema": "Dimension",
+      "name": "Stock Item",
+      "columns": [
+        {
+          "name": "Stock Item Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "WWI Stock Item ID",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Stock Item",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Color",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Selling Package",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Buying Package",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Brand",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Size",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Lead Time Days",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Quantity Per Outer",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Is Chiller Stock",
+          "data_type": "bit",
+          "is_nullable": false
+        },
+        {
+          "name": "Barcode",
+          "data_type": "nvarchar",
+          "is_nullable": true
+        },
+        {
+          "name": "Tax Rate",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Unit Price",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Recommended Retail Price",
+          "data_type": "decimal",
+          "is_nullable": true
+        },
+        {
+          "name": "Typical Weight Per Unit",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Photo",
+          "data_type": "varbinary",
+          "is_nullable": true
+        },
+        {
+          "name": "Valid From",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid To",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Lineage Key",
+          "data_type": "int",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": [
+        {
+          "Stock Item Key": 0,
+          "WWI Stock Item ID": 0,
+          "Stock Item": "Unknown",
+          "Color": "N/A",
+          "Selling Package": "N/A",
+          "Buying Package": "N/A",
+          "Brand": "N/A",
+          "Size": "N/A",
+          "Lead Time Days": 0,
+          "Quantity Per Outer": 0,
+          "Is Chiller Stock": false,
+          "Barcode": "N/A",
+          "Tax Rate": "0.000",
+          "Unit Price": "0.00",
+          "Recommended Retail Price": "0.00",
+          "Typical Weight Per Unit": "0.000",
+          "Photo": null,
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "9999-12-31 23:59:59.999999",
+          "Lineage Key": 0
+        },
+        {
+          "Stock Item Key": 1,
+          "WWI Stock Item ID": 219,
+          "Stock Item": "Void fill 400 L bag (White) 400L",
+          "Color": "N/A",
+          "Selling Package": "Each",
+          "Buying Package": "Each",
+          "Brand": "N/A",
+          "Size": "400L",
+          "Lead Time Days": 14,
+          "Quantity Per Outer": 10,
+          "Is Chiller Stock": false,
+          "Barcode": "N/A",
+          "Tax Rate": "14.000",
+          "Unit Price": "50.00",
+          "Recommended Retail Price": "74.75",
+          "Typical Weight Per Unit": "1.000",
+          "Photo": null,
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "2016-05-31 23:00:00",
+          "Lineage Key": 5
+        },
+        {
+          "Stock Item Key": 2,
+          "WWI Stock Item ID": 218,
+          "Stock Item": "Void fill 300 L bag (White) 300L",
+          "Color": "N/A",
+          "Selling Package": "Each",
+          "Buying Package": "Each",
+          "Brand": "N/A",
+          "Size": "300L",
+          "Lead Time Days": 14,
+          "Quantity Per Outer": 10,
+          "Is Chiller Stock": false,
+          "Barcode": "N/A",
+          "Tax Rate": "14.000",
+          "Unit Price": "37.50",
+          "Recommended Retail Price": "56.06",
+          "Typical Weight Per Unit": "0.750",
+          "Photo": null,
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "2016-05-31 23:00:00",
+          "Lineage Key": 5
+        },
+        {
+          "Stock Item Key": 3,
+          "WWI Stock Item ID": 217,
+          "Stock Item": "Void fill 200 L bag (White) 200L",
+          "Color": "N/A",
+          "Selling Package": "Each",
+          "Buying Package": "Each",
+          "Brand": "N/A",
+          "Size": "200L",
+          "Lead Time Days": 14,
+          "Quantity Per Outer": 10,
+          "Is Chiller Stock": false,
+          "Barcode": "N/A",
+          "Tax Rate": "14.000",
+          "Unit Price": "25.00",
+          "Recommended Retail Price": "37.38",
+          "Typical Weight Per Unit": "0.500",
+          "Photo": null,
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "2016-05-31 23:00:00",
+          "Lineage Key": 5
+        },
+        {
+          "Stock Item Key": 4,
+          "WWI Stock Item ID": 216,
+          "Stock Item": "Void fill 100 L bag (White) 100L",
+          "Color": "N/A",
+          "Selling Package": "Each",
+          "Buying Package": "Each",
+          "Brand": "N/A",
+          "Size": "100L",
+          "Lead Time Days": 14,
+          "Quantity Per Outer": 10,
+          "Is Chiller Stock": false,
+          "Barcode": "N/A",
+          "Tax Rate": "14.000",
+          "Unit Price": "12.50",
+          "Recommended Retail Price": "18.69",
+          "Typical Weight Per Unit": "0.250",
+          "Photo": null,
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "2016-05-31 23:00:00",
+          "Lineage Key": 5
+        }
+      ]
+    },
+    {
+      "schema": "Dimension",
+      "name": "Supplier",
+      "columns": [
+        {
+          "name": "Supplier Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "WWI Supplier ID",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Supplier",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Category",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Primary Contact",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Supplier Reference",
+          "data_type": "nvarchar",
+          "is_nullable": true
+        },
+        {
+          "name": "Payment Days",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Postal Code",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid From",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid To",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Lineage Key",
+          "data_type": "int",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": [
+        {
+          "Supplier Key": 0,
+          "WWI Supplier ID": 0,
+          "Supplier": "Unknown",
+          "Category": "N/A",
+          "Primary Contact": "N/A",
+          "Supplier Reference": "N/A",
+          "Payment Days": 0,
+          "Postal Code": "N/A",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "9999-12-31 23:59:59.999999",
+          "Lineage Key": 0
+        },
+        {
+          "Supplier Key": 1,
+          "WWI Supplier ID": 1,
+          "Supplier": "A Datum Corporation",
+          "Category": "Novelty Goods Supplier",
+          "Primary Contact": "Reio Kabin",
+          "Supplier Reference": "AA20384",
+          "Payment Days": 14,
+          "Postal Code": "46077",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "2013-01-01 00:05:00",
+          "Lineage Key": 6
+        },
+        {
+          "Supplier Key": 2,
+          "WWI Supplier ID": 13,
+          "Supplier": "Woodgrove Bank",
+          "Category": "Financial Services Supplier",
+          "Primary Contact": "Hubert Helms",
+          "Supplier Reference": "028034202",
+          "Payment Days": 7,
+          "Postal Code": "94101",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "2013-01-01 00:05:00",
+          "Lineage Key": 6
+        },
+        {
+          "Supplier Key": 3,
+          "WWI Supplier ID": 3,
+          "Supplier": "Consolidated Messenger",
+          "Category": "Courier",
+          "Primary Contact": "Kerstin Parn",
+          "Supplier Reference": "209340283",
+          "Payment Days": 30,
+          "Postal Code": "94101",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "2013-01-01 00:05:00",
+          "Lineage Key": 6
+        },
+        {
+          "Supplier Key": 4,
+          "WWI Supplier ID": 7,
+          "Supplier": "Litware, Inc.",
+          "Category": "Packaging Supplier",
+          "Primary Contact": "Elias Myllari",
+          "Supplier Reference": "BC0280982",
+          "Payment Days": 30,
+          "Postal Code": "95245",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "2013-01-01 00:05:00",
+          "Lineage Key": 6
+        }
+      ]
+    },
+    {
+      "schema": "Dimension",
+      "name": "Transaction Type",
+      "columns": [
+        {
+          "name": "Transaction Type Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "WWI Transaction Type ID",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Transaction Type",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid From",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid To",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Lineage Key",
+          "data_type": "int",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": [
+        {
+          "Transaction Type Key": 0,
+          "WWI Transaction Type ID": 0,
+          "Transaction Type": "Unknown",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "9999-12-31 23:59:59.999999",
+          "Lineage Key": 0
+        },
+        {
+          "Transaction Type Key": 1,
+          "WWI Transaction Type ID": 1,
+          "Transaction Type": "Customer Invoice",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "9999-12-31 23:59:59.999999",
+          "Lineage Key": 7
+        },
+        {
+          "Transaction Type Key": 2,
+          "WWI Transaction Type ID": 2,
+          "Transaction Type": "Customer Credit Note",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "9999-12-31 23:59:59.999999",
+          "Lineage Key": 7
+        },
+        {
+          "Transaction Type Key": 3,
+          "WWI Transaction Type ID": 3,
+          "Transaction Type": "Customer Payment Received",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "9999-12-31 23:59:59.999999",
+          "Lineage Key": 7
+        },
+        {
+          "Transaction Type Key": 4,
+          "WWI Transaction Type ID": 4,
+          "Transaction Type": "Customer Refund",
+          "Valid From": "2013-01-01 00:00:00",
+          "Valid To": "9999-12-31 23:59:59.999999",
+          "Lineage Key": 7
+        }
+      ]
+    },
+    {
+      "schema": "Fact",
+      "name": "Movement",
+      "columns": [
+        {
+          "name": "Movement Key",
+          "data_type": "bigint",
+          "is_nullable": false
+        },
+        {
+          "name": "Date Key",
+          "data_type": "date",
+          "is_nullable": false
+        },
+        {
+          "name": "Stock Item Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Customer Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Supplier Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Transaction Type Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "WWI Stock Item Transaction ID",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "WWI Invoice ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Purchase Order ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Quantity",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Lineage Key",
+          "data_type": "int",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": [
+        {
+          "Movement Key": 114122,
+          "Date Key": "2013-01-31",
+          "Stock Item Key": 205,
+          "Customer Key": 0,
+          "Supplier Key": 0,
+          "Transaction Type Key": 12,
+          "WWI Stock Item Transaction ID": 7829,
+          "WWI Invoice ID": null,
+          "WWI Purchase Order ID": null,
+          "Quantity": -2,
+          "Lineage Key": 8
+        },
+        {
+          "Movement Key": 3859,
+          "Date Key": "2013-04-30",
+          "Stock Item Key": 215,
+          "Customer Key": 0,
+          "Supplier Key": 0,
+          "Transaction Type Key": 12,
+          "WWI Stock Item Transaction ID": 28749,
+          "WWI Invoice ID": null,
+          "WWI Purchase Order ID": null,
+          "Quantity": 3,
+          "Lineage Key": 8
+        },
+        {
+          "Movement Key": 88765,
+          "Date Key": "2013-07-31",
+          "Stock Item Key": 62,
+          "Customer Key": 0,
+          "Supplier Key": 0,
+          "Transaction Type Key": 12,
+          "WWI Stock Item Transaction ID": 53288,
+          "WWI Invoice ID": null,
+          "WWI Purchase Order ID": null,
+          "Quantity": -4,
+          "Lineage Key": 8
+        },
+        {
+          "Movement Key": 88766,
+          "Date Key": "2013-07-31",
+          "Stock Item Key": 85,
+          "Customer Key": 0,
+          "Supplier Key": 0,
+          "Transaction Type Key": 12,
+          "WWI Stock Item Transaction ID": 53289,
+          "WWI Invoice ID": null,
+          "WWI Purchase Order ID": null,
+          "Quantity": 3,
+          "Lineage Key": 8
+        },
+        {
+          "Movement Key": 135480,
+          "Date Key": "2013-10-31",
+          "Stock Item Key": 60,
+          "Customer Key": 0,
+          "Supplier Key": 0,
+          "Transaction Type Key": 12,
+          "WWI Stock Item Transaction ID": 75169,
+          "WWI Invoice ID": null,
+          "WWI Purchase Order ID": null,
+          "Quantity": 4,
+          "Lineage Key": 8
+        }
+      ]
+    },
+    {
+      "schema": "Fact",
+      "name": "Order",
+      "columns": [
+        {
+          "name": "Order Key",
+          "data_type": "bigint",
+          "is_nullable": false
+        },
+        {
+          "name": "City Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Customer Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Stock Item Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Order Date Key",
+          "data_type": "date",
+          "is_nullable": false
+        },
+        {
+          "name": "Picked Date Key",
+          "data_type": "date",
+          "is_nullable": true
+        },
+        {
+          "name": "Salesperson Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Picker Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Order ID",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "WWI Backorder ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Description",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Package",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Quantity",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Unit Price",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Tax Rate",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Total Excluding Tax",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Tax Amount",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Total Including Tax",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Lineage Key",
+          "data_type": "int",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": [
+        {
+          "Order Key": 702,
+          "City Key": 50969,
+          "Customer Key": 0,
+          "Stock Item Key": 163,
+          "Order Date Key": "2013-01-05",
+          "Picked Date Key": "2013-01-05",
+          "Salesperson Key": 11,
+          "Picker Key": 22,
+          "WWI Order ID": 291,
+          "WWI Backorder ID": null,
+          "Description": "IT joke mug - hardware: part of the computer that can be kicked (Black)",
+          "Package": "Each",
+          "Quantity": 3,
+          "Unit Price": "13.00",
+          "Tax Rate": "15.000",
+          "Total Excluding Tax": "39.00",
+          "Tax Amount": "5.85",
+          "Total Including Tax": "44.85",
+          "Lineage Key": 9
+        },
+        {
+          "Order Key": 894,
+          "City Key": 53636,
+          "Customer Key": 0,
+          "Stock Item Key": 182,
+          "Order Date Key": "2013-01-07",
+          "Picked Date Key": "2013-01-07",
+          "Salesperson Key": 12,
+          "Picker Key": 17,
+          "WWI Order ID": 357,
+          "WWI Backorder ID": null,
+          "Description": "Developer joke mug - inheritance is the OO way to become wealthy (White)",
+          "Package": "Each",
+          "Quantity": 3,
+          "Unit Price": "13.00",
+          "Tax Rate": "15.000",
+          "Total Excluding Tax": "39.00",
+          "Tax Amount": "5.85",
+          "Total Including Tax": "44.85",
+          "Lineage Key": 9
+        },
+        {
+          "Order Key": 924,
+          "City Key": 41165,
+          "Customer Key": 0,
+          "Stock Item Key": 197,
+          "Order Date Key": "2013-01-07",
+          "Picked Date Key": "2013-01-07",
+          "Salesperson Key": 23,
+          "Picker Key": 17,
+          "WWI Order ID": 365,
+          "WWI Backorder ID": null,
+          "Description": "DBA joke mug - it depends (Black)",
+          "Package": "Each",
+          "Quantity": 3,
+          "Unit Price": "13.00",
+          "Tax Rate": "15.000",
+          "Total Excluding Tax": "39.00",
+          "Tax Amount": "5.85",
+          "Total Including Tax": "44.85",
+          "Lineage Key": 9
+        },
+        {
+          "Order Key": 1087,
+          "City Key": 72156,
+          "Customer Key": 0,
+          "Stock Item Key": 176,
+          "Order Date Key": "2013-01-07",
+          "Picked Date Key": "2013-01-07",
+          "Salesperson Key": 6,
+          "Picker Key": 17,
+          "WWI Order ID": 414,
+          "WWI Backorder ID": null,
+          "Description": "Developer joke mug - there are 10 types of people in the world (White)",
+          "Package": "Each",
+          "Quantity": 3,
+          "Unit Price": "13.00",
+          "Tax Rate": "15.000",
+          "Total Excluding Tax": "39.00",
+          "Tax Amount": "5.85",
+          "Total Including Tax": "44.85",
+          "Lineage Key": 9
+        },
+        {
+          "Order Key": 1292,
+          "City Key": 47741,
+          "Customer Key": 0,
+          "Stock Item Key": 182,
+          "Order Date Key": "2013-01-09",
+          "Picked Date Key": "2013-01-09",
+          "Salesperson Key": 7,
+          "Picker Key": 22,
+          "WWI Order ID": 474,
+          "WWI Backorder ID": null,
+          "Description": "Developer joke mug - inheritance is the OO way to become wealthy (White)",
+          "Package": "Each",
+          "Quantity": 3,
+          "Unit Price": "13.00",
+          "Tax Rate": "15.000",
+          "Total Excluding Tax": "39.00",
+          "Tax Amount": "5.85",
+          "Total Including Tax": "44.85",
+          "Lineage Key": 9
+        }
+      ]
+    },
+    {
+      "schema": "Fact",
+      "name": "Purchase",
+      "columns": [
+        {
+          "name": "Purchase Key",
+          "data_type": "bigint",
+          "is_nullable": false
+        },
+        {
+          "name": "Date Key",
+          "data_type": "date",
+          "is_nullable": false
+        },
+        {
+          "name": "Supplier Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Stock Item Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "WWI Purchase Order ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Ordered Outers",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Ordered Quantity",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Received Outers",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Package",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Is Order Finalized",
+          "data_type": "bit",
+          "is_nullable": false
+        },
+        {
+          "name": "Lineage Key",
+          "data_type": "int",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": [
+        {
+          "Purchase Key": 5,
+          "Date Key": "2013-01-01",
+          "Supplier Key": 17,
+          "Stock Item Key": 143,
+          "WWI Purchase Order ID": 2,
+          "Ordered Outers": 1,
+          "Ordered Quantity": 12,
+          "Received Outers": 1,
+          "Package": "Carton",
+          "Is Order Finalized": true,
+          "Lineage Key": 10
+        },
+        {
+          "Purchase Key": 95,
+          "Date Key": "2013-01-02",
+          "Supplier Key": 17,
+          "Stock Item Key": 143,
+          "WWI Purchase Order ID": 7,
+          "Ordered Outers": 6,
+          "Ordered Quantity": 72,
+          "Received Outers": 6,
+          "Package": "Carton",
+          "Is Order Finalized": true,
+          "Lineage Key": 10
+        },
+        {
+          "Purchase Key": 140,
+          "Date Key": "2013-01-03",
+          "Supplier Key": 17,
+          "Stock Item Key": 143,
+          "WWI Purchase Order ID": 12,
+          "Ordered Outers": 11,
+          "Ordered Quantity": 132,
+          "Received Outers": 11,
+          "Package": "Carton",
+          "Is Order Finalized": true,
+          "Lineage Key": 10
+        },
+        {
+          "Purchase Key": 172,
+          "Date Key": "2013-01-04",
+          "Supplier Key": 17,
+          "Stock Item Key": 143,
+          "WWI Purchase Order ID": 17,
+          "Ordered Outers": 9,
+          "Ordered Quantity": 108,
+          "Received Outers": 9,
+          "Package": "Carton",
+          "Is Order Finalized": true,
+          "Lineage Key": 10
+        },
+        {
+          "Purchase Key": 187,
+          "Date Key": "2013-01-05",
+          "Supplier Key": 17,
+          "Stock Item Key": 143,
+          "WWI Purchase Order ID": 21,
+          "Ordered Outers": 2,
+          "Ordered Quantity": 24,
+          "Received Outers": 2,
+          "Package": "Carton",
+          "Is Order Finalized": true,
+          "Lineage Key": 10
+        }
+      ]
+    },
+    {
+      "schema": "Fact",
+      "name": "Sale",
+      "columns": [
+        {
+          "name": "Sale Key",
+          "data_type": "bigint",
+          "is_nullable": false
+        },
+        {
+          "name": "City Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Customer Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Bill To Customer Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Stock Item Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Invoice Date Key",
+          "data_type": "date",
+          "is_nullable": false
+        },
+        {
+          "name": "Delivery Date Key",
+          "data_type": "date",
+          "is_nullable": true
+        },
+        {
+          "name": "Salesperson Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "WWI Invoice ID",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Description",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Package",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Quantity",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Unit Price",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Tax Rate",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Total Excluding Tax",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Tax Amount",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Profit",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Total Including Tax",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Total Dry Items",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Total Chiller Items",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Lineage Key",
+          "data_type": "int",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": [
+        {
+          "Sale Key": 438,
+          "City Key": 41568,
+          "Customer Key": 0,
+          "Bill To Customer Key": 0,
+          "Stock Item Key": 176,
+          "Invoice Date Key": "2013-01-03",
+          "Delivery Date Key": "2013-01-04",
+          "Salesperson Key": 9,
+          "WWI Invoice ID": 187,
+          "Description": "Developer joke mug - there are 10 types of people in the world (White)",
+          "Package": "Each",
+          "Quantity": 3,
+          "Unit Price": "13.00",
+          "Tax Rate": "15.000",
+          "Total Excluding Tax": "39.00",
+          "Tax Amount": "5.85",
+          "Profit": "25.50",
+          "Total Including Tax": "44.85",
+          "Total Dry Items": 3,
+          "Total Chiller Items": 0,
+          "Lineage Key": 11
+        },
+        {
+          "Sale Key": 692,
+          "City Key": 50969,
+          "Customer Key": 0,
+          "Bill To Customer Key": 0,
+          "Stock Item Key": 163,
+          "Invoice Date Key": "2013-01-05",
+          "Delivery Date Key": "2013-01-06",
+          "Salesperson Key": 11,
+          "WWI Invoice ID": 282,
+          "Description": "IT joke mug - hardware: part of the computer that can be kicked (Black)",
+          "Package": "Each",
+          "Quantity": 3,
+          "Unit Price": "13.00",
+          "Tax Rate": "15.000",
+          "Total Excluding Tax": "39.00",
+          "Tax Amount": "5.85",
+          "Profit": "25.50",
+          "Total Including Tax": "44.85",
+          "Total Dry Items": 3,
+          "Total Chiller Items": 0,
+          "Lineage Key": 11
+        },
+        {
+          "Sale Key": 999,
+          "City Key": 53636,
+          "Customer Key": 0,
+          "Bill To Customer Key": 0,
+          "Stock Item Key": 182,
+          "Invoice Date Key": "2013-01-07",
+          "Delivery Date Key": "2013-01-08",
+          "Salesperson Key": 12,
+          "WWI Invoice ID": 388,
+          "Description": "Developer joke mug - inheritance is the OO way to become wealthy (White)",
+          "Package": "Each",
+          "Quantity": 3,
+          "Unit Price": "13.00",
+          "Tax Rate": "15.000",
+          "Total Excluding Tax": "39.00",
+          "Tax Amount": "5.85",
+          "Profit": "25.50",
+          "Total Including Tax": "44.85",
+          "Total Dry Items": 3,
+          "Total Chiller Items": 0,
+          "Lineage Key": 11
+        },
+        {
+          "Sale Key": 1019,
+          "City Key": 41165,
+          "Customer Key": 0,
+          "Bill To Customer Key": 0,
+          "Stock Item Key": 197,
+          "Invoice Date Key": "2013-01-07",
+          "Delivery Date Key": "2013-01-08",
+          "Salesperson Key": 23,
+          "WWI Invoice ID": 393,
+          "Description": "DBA joke mug - it depends (Black)",
+          "Package": "Each",
+          "Quantity": 3,
+          "Unit Price": "13.00",
+          "Tax Rate": "15.000",
+          "Total Excluding Tax": "39.00",
+          "Tax Amount": "5.85",
+          "Profit": "25.50",
+          "Total Including Tax": "44.85",
+          "Total Dry Items": 3,
+          "Total Chiller Items": 0,
+          "Lineage Key": 11
+        },
+        {
+          "Sale Key": 1047,
+          "City Key": 72156,
+          "Customer Key": 0,
+          "Bill To Customer Key": 0,
+          "Stock Item Key": 176,
+          "Invoice Date Key": "2013-01-07",
+          "Delivery Date Key": "2013-01-08",
+          "Salesperson Key": 6,
+          "WWI Invoice ID": 401,
+          "Description": "Developer joke mug - there are 10 types of people in the world (White)",
+          "Package": "Each",
+          "Quantity": 3,
+          "Unit Price": "13.00",
+          "Tax Rate": "15.000",
+          "Total Excluding Tax": "39.00",
+          "Tax Amount": "5.85",
+          "Profit": "25.50",
+          "Total Including Tax": "44.85",
+          "Total Dry Items": 3,
+          "Total Chiller Items": 0,
+          "Lineage Key": 11
+        }
+      ]
+    },
+    {
+      "schema": "Fact",
+      "name": "Stock Holding",
+      "columns": [
+        {
+          "name": "Stock Holding Key",
+          "data_type": "bigint",
+          "is_nullable": false
+        },
+        {
+          "name": "Stock Item Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Quantity On Hand",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Bin Location",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Last Stocktake Quantity",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Last Cost Price",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Reorder Level",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Target Stock Level",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Lineage Key",
+          "data_type": "int",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": [
+        {
+          "Stock Holding Key": 1,
+          "Stock Item Key": 603,
+          "Quantity On Hand": 175609,
+          "Bin Location": "L-1",
+          "Last Stocktake Quantity": 171341,
+          "Last Cost Price": "9.00",
+          "Reorder Level": 20,
+          "Target Stock Level": 100,
+          "Lineage Key": 12
+        },
+        {
+          "Stock Holding Key": 2,
+          "Stock Item Key": 604,
+          "Quantity On Hand": 165538,
+          "Bin Location": "L-1",
+          "Last Stocktake Quantity": 161435,
+          "Last Cost Price": "9.00",
+          "Reorder Level": 20,
+          "Target Stock Level": 100,
+          "Lineage Key": 12
+        },
+        {
+          "Stock Holding Key": 3,
+          "Stock Item Key": 398,
+          "Quantity On Hand": 253190,
+          "Bin Location": "L-2",
+          "Last Stocktake Quantity": 246900,
+          "Last Cost Price": "11.00",
+          "Reorder Level": 10,
+          "Target Stock Level": 120,
+          "Lineage Key": 12
+        },
+        {
+          "Stock Holding Key": 4,
+          "Stock Item Key": 591,
+          "Quantity On Hand": 208109,
+          "Bin Location": "L-3",
+          "Last Stocktake Quantity": 202964,
+          "Last Cost Price": "12.00",
+          "Reorder Level": 5,
+          "Target Stock Level": 100,
+          "Lineage Key": 12
+        },
+        {
+          "Stock Holding Key": 5,
+          "Stock Item Key": 592,
+          "Quantity On Hand": 199064,
+          "Bin Location": "L-3",
+          "Last Stocktake Quantity": 194162,
+          "Last Cost Price": "12.00",
+          "Reorder Level": 5,
+          "Target Stock Level": 100,
+          "Lineage Key": 12
+        }
+      ]
+    },
+    {
+      "schema": "Fact",
+      "name": "Transaction",
+      "columns": [
+        {
+          "name": "Transaction Key",
+          "data_type": "bigint",
+          "is_nullable": false
+        },
+        {
+          "name": "Date Key",
+          "data_type": "date",
+          "is_nullable": false
+        },
+        {
+          "name": "Customer Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Bill To Customer Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Supplier Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Transaction Type Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "Payment Method Key",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Customer Transaction ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Supplier Transaction ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Invoice ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "WWI Purchase Order ID",
+          "data_type": "int",
+          "is_nullable": true
+        },
+        {
+          "name": "Supplier Invoice Number",
+          "data_type": "nvarchar",
+          "is_nullable": true
+        },
+        {
+          "name": "Total Excluding Tax",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Tax Amount",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Total Including Tax",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Outstanding Balance",
+          "data_type": "decimal",
+          "is_nullable": false
+        },
+        {
+          "name": "Is Finalized",
+          "data_type": "bit",
+          "is_nullable": false
+        },
+        {
+          "name": "Lineage Key",
+          "data_type": "int",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": [
+        {
+          "Transaction Key": 44,
+          "Date Key": "2013-01-02",
+          "Customer Key": 0,
+          "Bill To Customer Key": 0,
+          "Supplier Key": 0,
+          "Transaction Type Key": 3,
+          "Payment Method Key": 4,
+          "WWI Customer Transaction ID": 233,
+          "WWI Supplier Transaction ID": null,
+          "WWI Invoice ID": null,
+          "WWI Purchase Order ID": null,
+          "Supplier Invoice Number": null,
+          "Total Excluding Tax": "0.00",
+          "Tax Amount": "0.00",
+          "Total Including Tax": "-465.75",
+          "Outstanding Balance": "0.00",
+          "Is Finalized": true,
+          "Lineage Key": 13
+        },
+        {
+          "Transaction Key": 45,
+          "Date Key": "2013-01-02",
+          "Customer Key": 0,
+          "Bill To Customer Key": 0,
+          "Supplier Key": 0,
+          "Transaction Type Key": 3,
+          "Payment Method Key": 4,
+          "WWI Customer Transaction ID": 234,
+          "WWI Supplier Transaction ID": null,
+          "WWI Invoice ID": null,
+          "WWI Purchase Order ID": null,
+          "Supplier Invoice Number": null,
+          "Total Excluding Tax": "0.00",
+          "Tax Amount": "0.00",
+          "Total Including Tax": "-897.00",
+          "Outstanding Balance": "0.00",
+          "Is Finalized": true,
+          "Lineage Key": 13
+        },
+        {
+          "Transaction Key": 46,
+          "Date Key": "2013-01-02",
+          "Customer Key": 0,
+          "Bill To Customer Key": 0,
+          "Supplier Key": 0,
+          "Transaction Type Key": 3,
+          "Payment Method Key": 4,
+          "WWI Customer Transaction ID": 235,
+          "WWI Supplier Transaction ID": null,
+          "WWI Invoice ID": null,
+          "WWI Purchase Order ID": null,
+          "Supplier Invoice Number": null,
+          "Total Excluding Tax": "0.00",
+          "Tax Amount": "0.00",
+          "Total Including Tax": "-2645.00",
+          "Outstanding Balance": "0.00",
+          "Is Finalized": true,
+          "Lineage Key": 13
+        },
+        {
+          "Transaction Key": 47,
+          "Date Key": "2013-01-02",
+          "Customer Key": 0,
+          "Bill To Customer Key": 0,
+          "Supplier Key": 0,
+          "Transaction Type Key": 3,
+          "Payment Method Key": 4,
+          "WWI Customer Transaction ID": 236,
+          "WWI Supplier Transaction ID": null,
+          "WWI Invoice ID": null,
+          "WWI Purchase Order ID": null,
+          "Supplier Invoice Number": null,
+          "Total Excluding Tax": "0.00",
+          "Tax Amount": "0.00",
+          "Total Including Tax": "-946.45",
+          "Outstanding Balance": "0.00",
+          "Is Finalized": true,
+          "Lineage Key": 13
+        },
+        {
+          "Transaction Key": 48,
+          "Date Key": "2013-01-02",
+          "Customer Key": 0,
+          "Bill To Customer Key": 0,
+          "Supplier Key": 0,
+          "Transaction Type Key": 3,
+          "Payment Method Key": 4,
+          "WWI Customer Transaction ID": 237,
+          "WWI Supplier Transaction ID": null,
+          "WWI Invoice ID": null,
+          "WWI Purchase Order ID": null,
+          "Supplier Invoice Number": null,
+          "Total Excluding Tax": "0.00",
+          "Tax Amount": "0.00",
+          "Total Including Tax": "-747.50",
+          "Outstanding Balance": "0.00",
+          "Is Finalized": true,
+          "Lineage Key": 13
+        }
+      ]
+    },
+    {
+      "schema": "Integration",
+      "name": "City_Staging",
+      "columns": [
+        {
+          "name": "City Staging Key",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "WWI City ID",
+          "data_type": "int",
+          "is_nullable": false
+        },
+        {
+          "name": "City",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "State Province",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Country",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Continent",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Sales Territory",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Region",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Subregion",
+          "data_type": "nvarchar",
+          "is_nullable": false
+        },
+        {
+          "name": "Location",
+          "data_type": "geography",
+          "is_nullable": true
+        },
+        {
+          "name": "Latest Recorded Population",
+          "data_type": "bigint",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid From",
+          "data_type": "datetime2",
+          "is_nullable": false
+        },
+        {
+          "name": "Valid To",
+          "data_type": "datetime2",
+          "is_nullable": false
+        }
+      ],
+      "sample_rows": []
+    }
+  ]
+}

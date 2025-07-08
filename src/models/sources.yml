@@ -1,0 +1,47 @@
+version: 2
+
+sources:
+  - name: integration
+    database: WideWorldImportersDW
+    schema: Integration
+    tables:
+      - name: ETL Cutoff
+      - name: Lineage
+      - name: Customer_Staging
+      - name: Employee_Staging
+      - name: Movement_Staging
+      - name: Order_Staging
+      - name: PaymentMethod_Staging
+      - name: Purchase_Staging
+      - name: Sale_Staging
+      - name: StockHolding_Staging
+      - name: StockItem_Staging
+      - name: Supplier_Staging
+      - name: Transaction_Staging
+      - name: TransactionType_Staging
+      - name: City_Staging
+
+  - name: dimension
+    database: WideWorldImportersDW
+    schema: Dimension
+    tables:
+      - name: City
+      - name: Customer
+      - name: Date
+      - name: Employee
+      - name: Payment Method
+      - name: Stock Item
+      - name: Supplier
+      - name: Transaction Type
+
+  - name: fact
+    database: WideWorldImportersDW
+    schema: Fact
+    tables:
+      - name: Movement
+      - name: Order
+      - name: Purchase
+      - name: Sale
+      - name: Stock Holding
+      - name: Transaction
+

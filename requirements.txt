@@ -1,0 +1,16 @@
+dbt-core
+dbt-sqlserver
+pyodbc
+pydantic
+jina
+qdrant-client
+neo4j
+google-adk
+requests
+great_expectations
+streamlit
+prometheus_client
+pytest
+langchain
+openrouter-client
+mcp-agent
