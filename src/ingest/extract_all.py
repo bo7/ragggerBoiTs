@@ -1,18 +1,23 @@
 #!/usr/bin/env python3
 import json
 import pyodbc
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # === CONFIGURE YOUR CONNECTION ===
 CONN_STR = (
-    "Driver={ODBC Driver 18 for SQL Server};"
-    "Server=207.180.243.86,1433;"
-    "Database=WideWorldImportersDW;"
-    "UID=sql-crafter;"
-    "PWD=start123;"
+    f"Driver={{{os.getenv('DB_DRIVER')}}};"
+    f"Server={os.getenv('DB_SERVER')},{os.getenv('DB_PORT')};"
+    f"Database={os.getenv('DB_DATABASE')};"
+    f"UID={os.getenv('DB_USERNAME')};"
+    f"PWD={os.getenv('DB_PASSWORD')};"
     "Encrypt=yes;TrustServerCertificate=yes;"
 )
-SAMPLE_LIMIT = 5
-OUTPUT_PATH = "all_tables.json"
+SAMPLE_LIMIT = int(os.getenv('SAMPLE_LIMIT', 5))
+OUTPUT_PATH = os.getenv('OUTPUT_PATH', 'all_tables.json')
 
 def get_tables(cursor):
     cursor.execute("""

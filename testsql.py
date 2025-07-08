@@ -1,13 +1,18 @@
 import pyodbc
+import os
+from dotenv import load_dotenv
 
-server   = '207.180.243.86'           # deine Public-IP
-port     = 1433
-database = 'WideWorldImportersDW'     # deine Ziel-DB
-username = 'sql-crafter'
-password = 'start123'
+# Load environment variables
+load_dotenv()
+
+server   = os.getenv('DB_SERVER')
+port     = os.getenv('DB_PORT')
+database = os.getenv('DB_DATABASE')
+username = os.getenv('DB_USERNAME')
+password = os.getenv('DB_PASSWORD')
 
 conn_str = (
-    "Driver={ODBC Driver 18 for SQL Server};"
+    f"Driver={{{os.getenv('DB_DRIVER')}}};"
     f"Server={server},{port};"
     f"Database={database};"
     f"UID={username};"

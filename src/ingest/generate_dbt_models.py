@@ -1,17 +1,22 @@
 import json, pyodbc
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # ———————————————————————————
 # CONFIGURATION
 CONN_STR = (
-    "Driver={ODBC Driver 18 for SQL Server};"
-    "Server=207.180.243.86,1433;"
-    "Database=WideWorldImportersDW;"
-    "UID=sql-crafter;"
-    "PWD=start123;"
+    f"Driver={{{os.getenv('DB_DRIVER')}}};"
+    f"Server={os.getenv('DB_SERVER')},{os.getenv('DB_PORT')};"
+    f"Database={os.getenv('DB_DATABASE')};"
+    f"UID={os.getenv('DB_USERNAME')};"
+    f"PWD={os.getenv('DB_PASSWORD')};"
     "Encrypt=yes;TrustServerCertificate=yes;"
 )
-INPUT_JSON = Path(__file__).parent / "all_tables.json"
+INPUT_JSON = Path(__file__).parent / os.getenv('OUTPUT_PATH', 'all_tables.json')
 MODELS_DIR = Path(__file__).parents[1] / "models"
 SOURCES_YML = MODELS_DIR / "sources.yml"
 # ———————————————————————————
