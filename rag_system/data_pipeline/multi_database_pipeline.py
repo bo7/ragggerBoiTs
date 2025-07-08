@@ -16,8 +16,8 @@ import time
 from datetime import datetime
 
 from .database_discovery import DatabaseDiscovery
-from .dbt_integration import DbtIntegration
-from .sql_extractor import SQLExtractor
+from .dbt_integration import DBTSemanticExtractor
+from .sql_extractor import EnhancedSQLExtractor
 from ..embedding.jina_client import JinaEmbeddingClient
 from ..storage.vector_store import MilvusVectorStore, VectorStoreManager
 from ..storage.graph_store import Neo4jGraphStore
@@ -89,8 +89,8 @@ class MultiDatabasePipeline:
         
         # Initialize components
         self.discovery = DatabaseDiscovery()
-        self.dbt_integration = DbtIntegration()
-        self.sql_extractor = SQLExtractor()
+        self.dbt_integration = DBTSemanticExtractor()
+        self.sql_extractor = EnhancedSQLExtractor()
         self.embedding_client = JinaEmbeddingClient()
         
         # Storage components
@@ -271,11 +271,10 @@ class MultiDatabasePipeline:
     async def _process_table(self, table_info, config: DatabaseConfig, stats: ProcessingStats):
         """Process a single table through the RAG pipeline"""
         try:
-            # Extract table data
-            table_data = await self.sql_extractor.extract_table_data(
-                database_name=table_info.database_name,
-                table_name=f"{table_info.schema_name}.{table_info.table_name}",
-                limit=config.sample_limit
+            # Extract table data (simplified for demo)
+            table_data = await self._extract_sample_table_data(
+                table_info,
+                config.sample_limit
             )
             
             if not table_data:
@@ -285,10 +284,9 @@ class MultiDatabasePipeline:
             stats.total_records += len(table_data)
             
             # Get dbt semantic information
-            dbt_info = await self.dbt_integration.get_semantic_info(
-                database_name=table_info.database_name,
-                schema_name=table_info.schema_name,
-                table_name=table_info.table_name
+            dbt_info = await self.dbt_integration.get_table_semantic_info(
+                schema=table_info.schema_name,
+                table=table_info.table_name
             )
             
             # Create enhanced text representations
@@ -298,9 +296,9 @@ class MultiDatabasePipeline:
                 enhanced_texts.append(enhanced_text)
             
             # Generate embeddings
-            embeddings = await self.embedding_client.embed_texts(
+            embeddings = await self.embedding_client.embed_text(
                 enhanced_texts,
-                task_type="text-embedding-ada-002"
+                task="retrieval.passage"
             )
             
             if not embeddings:
@@ -347,11 +345,11 @@ class MultiDatabasePipeline:
             
             # Add dbt semantic information
             if dbt_info:
-                if dbt_info.get('description'):
-                    text_parts.append(f"Description: {dbt_info['description']}")
+                if dbt_info.description:
+                    text_parts.append(f"Description: {dbt_info.description}")
                 
-                if dbt_info.get('business_context'):
-                    text_parts.append(f"Business Context: {dbt_info['business_context']}")
+                if dbt_info.business_rules:
+                    text_parts.append(f"Business Rules: {'; '.join(dbt_info.business_rules)}")
             
             # Add record data
             record_parts = []
@@ -359,10 +357,11 @@ class MultiDatabasePipeline:
                 if value is not None:
                     # Add semantic column context if available
                     column_context = ""
-                    if dbt_info and dbt_info.get('columns', {}).get(key):
-                        column_info = dbt_info['columns'][key]
-                        if column_info.get('description'):
-                            column_context = f" ({column_info['description']})"
+                    if dbt_info and dbt_info.columns:
+                        for col_info in dbt_info.columns:
+                            if col_info.name == key and col_info.description:
+                                column_context = f" ({col_info.description})"
+                                break
                     
                     record_parts.append(f"{key}{column_context}: {value}")
             
@@ -374,6 +373,58 @@ class MultiDatabasePipeline:
             logger.error(f"Failed to create enhanced text: {e}")
             return str(record)
     
+    async def _extract_sample_table_data(self, table_info, limit: int) -> List[Dict]:
+        """Extract sample data from a table"""
+        try:
+            import pyodbc
+            
+            # Build connection string
+            settings = get_settings()
+            connection_string = (
+                f"DRIVER={{{settings.db_driver}}};"
+                f"SERVER={settings.db_server},{settings.db_port};"
+                f"DATABASE={table_info.database_name};"
+                f"UID={settings.db_username};"
+                f"PWD={settings.db_password};"
+                f"TrustServerCertificate=yes;"
+            )
+            
+            # Connect and query
+            conn = pyodbc.connect(connection_string)
+            cursor = conn.cursor()
+            
+            # Query with limit
+            query = f"SELECT TOP {limit} * FROM [{table_info.schema_name}].[{table_info.table_name}]"
+            cursor.execute(query)
+            
+            # Get column names
+            columns = [desc[0] for desc in cursor.description]
+            
+            # Fetch data
+            rows = cursor.fetchall()
+            
+            # Convert to dict list
+            table_data = []
+            for row in rows:
+                record = {}
+                for i, value in enumerate(row):
+                    # Handle unsupported SQL types
+                    if value is None:
+                        record[columns[i]] = None
+                    else:
+                        try:
+                            record[columns[i]] = str(value)
+                        except:
+                            record[columns[i]] = f"<unsupported_type_{type(value).__name__}>"
+                table_data.append(record)
+            
+            conn.close()
+            return table_data
+            
+        except Exception as e:
+            logger.error(f"Failed to extract table data: {e}")
+            return []
+    
     async def _store_graph_relationships(self, table_info, table_data: List[Dict], dbt_info: Dict) -> bool:
         """Store table relationships in graph database"""
         try:
@@ -382,10 +433,10 @@ class MultiDatabasePipeline:
                 "id": f"{table_info.database_name}.{table_info.schema_name}.{table_info.table_name}",
                 "database": table_info.database_name,
                 "schema": table_info.schema_name,
-                "table": table_info.table_name,
+                "table_name": table_info.table_name,
                 "type": "table",
                 "row_count": len(table_data),
-                "description": dbt_info.get('description') if dbt_info else None
+                "description": dbt_info.description if dbt_info else None
             }
             
             await self.graph_store.create_node("Table", table_node)

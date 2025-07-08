@@ -229,9 +229,9 @@ Answer:"""
         """Execute vector similarity search"""
         try:
             # Generate query embedding
-            query_embedding = await self.embedding_client.embed_texts(
+            query_embedding = await self.embedding_client.embed_text(
                 [query],
-                task_type="text-embedding-ada-002"
+                task="retrieval.query"
             )
             
             if not query_embedding:
@@ -353,8 +353,8 @@ Answer:"""
         if any(word in query_lower for word in ["schema", "structure", "database", "table"]):
             return """
             MATCH (db:Database)-[:CONTAINS]->(schema:Schema)-[:CONTAINS]->(table:Table)
-            RETURN db.name as database, schema.name as schema, table.name as table_name, table.row_count as row_count
-            ORDER BY db.name, schema.name, table.name
+            RETURN db.database as database, schema.schema as schema, table.table_name as table_name, table.row_count as row_count
+            ORDER BY db.database, schema.schema, table.table_name
             LIMIT 20
             """
         
@@ -362,8 +362,8 @@ Answer:"""
         if any(word in query_lower for word in ["relationship", "related", "connection"]):
             return """
             MATCH (from:Table)-[r:REFERENCES]->(to:Table)
-            RETURN from.database as from_database, from.schema as from_schema, from.table as from_table,
-                   to.database as to_database, to.schema as to_schema, to.table as to_table,
+            RETURN from.database as from_database, from.schema as from_schema, from.table_name as from_table,
+                   to.database as to_database, to.schema as to_schema, to.table_name as to_table,
                    r.constraint_name as constraint_name
             LIMIT 20
             """
@@ -373,8 +373,8 @@ Answer:"""
         MATCH (db:Database)
         OPTIONAL MATCH (db)-[:CONTAINS]->(schema:Schema)
         OPTIONAL MATCH (schema)-[:CONTAINS]->(table:Table)
-        RETURN db.name as database, count(DISTINCT schema) as schema_count, count(table) as table_count
-        ORDER BY db.name
+        RETURN db.database as database, count(DISTINCT schema) as schema_count, count(table) as table_count
+        ORDER BY db.database
         """
     
     def _format_vector_results(self, results: List[Dict]) -> str:
