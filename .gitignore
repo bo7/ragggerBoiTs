@@ -76,3 +76,9 @@ nohup.out
 *.tmp
 *.temp
 .cache/
+
+# Installers
+*.sh
+*.exe
+*.msi
+*.dmg
