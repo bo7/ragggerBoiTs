@@ -45,3 +45,55 @@ sources:
       - name: Stock Holding
       - name: Transaction
 
+  # WideWorldImporters (OLTP System)
+  - name: application
+    database: WideWorldImporters
+    schema: Application
+    tables:
+      - name: Cities
+      - name: Countries
+      - name: DeliveryMethods
+      - name: PaymentMethods
+      - name: People
+      - name: StateProvinces
+      - name: SystemParameters
+      - name: TransactionTypes
+
+  - name: purchasing
+    database: WideWorldImporters
+    schema: Purchasing
+    tables:
+      - name: PurchaseOrderLines
+      - name: PurchaseOrders
+      - name: SupplierCategories
+      - name: Suppliers
+      - name: SupplierTransactions
+
+  - name: sales
+    database: WideWorldImporters
+    schema: Sales
+    tables:
+      - name: BuyingGroups
+      - name: CustomerCategories
+      - name: Customers
+      - name: CustomerTransactions
+      - name: InvoiceLines
+      - name: Invoices
+      - name: OrderLines
+      - name: Orders
+      - name: SpecialDeals
+
+  - name: warehouse
+    database: WideWorldImporters
+    schema: Warehouse
+    tables:
+      - name: ColdRoomTemperatures
+      - name: Colors
+      - name: PackageTypes
+      - name: StockGroups
+      - name: StockItems
+      - name: StockItemHoldings
+      - name: StockItemStockGroups
+      - name: StockItemTransactions
+      - name: VehicleTemperatures
+

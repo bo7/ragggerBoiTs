@@ -128,6 +128,16 @@ class MilvusVectorStore:
                     dtype=self.DataType.JSON
                 ),
                 self.FieldSchema(
+                    name="source_database",
+                    dtype=self.DataType.VARCHAR,
+                    max_length=255
+                ),
+                self.FieldSchema(
+                    name="source_schema",
+                    dtype=self.DataType.VARCHAR,
+                    max_length=255
+                ),
+                self.FieldSchema(
                     name="source_table",
                     dtype=self.DataType.VARCHAR,
                     max_length=255
@@ -187,6 +197,8 @@ class MilvusVectorStore:
                            vectors: List[List[float]],
                            texts: List[str],
                            metadata: List[Dict],
+                           source_database: str = "",
+                           source_schema: str = "",
                            source_table: str = "",
                            source_ids: List[str] = None,
                            embedding_model: str = "jina-embeddings-v4") -> bool:
@@ -217,16 +229,18 @@ class MilvusVectorStore:
             current_time = int(time.time() * 1000)  # milliseconds
             
             if source_ids is None:
-                source_ids = [f"{source_table}_{i}" for i in range(len(vectors))]
+                source_ids = [f"{source_database}.{source_schema}.{source_table}_{i}" for i in range(len(vectors))]
             
             data = [
                 vectors,  # vector field
                 texts,    # text field
                 metadata, # metadata field (JSON)
-                [source_table] * len(vectors),  # source_table field
+                [source_database] * len(vectors),  # source_database field
+                [source_schema] * len(vectors),   # source_schema field
+                [source_table] * len(vectors),    # source_table field
                 source_ids,  # source_id field
                 [embedding_model] * len(vectors),  # embedding_model field
-                [current_time] * len(vectors)  # created_at field
+                [current_time] * len(vectors)     # created_at field
             ]
             
             # Insert data
@@ -277,7 +291,7 @@ class MilvusVectorStore:
                 param=search_params,
                 limit=limit,
                 expr=filter_expr,
-                output_fields=["text", "metadata", "source_table", "source_id", "embedding_model", "created_at"]
+                output_fields=["text", "metadata", "source_database", "source_schema", "source_table", "source_id", "embedding_model", "created_at"]
             )
             
             # Process results
@@ -289,6 +303,8 @@ class MilvusVectorStore:
                         "score": hit.score,
                         "text": hit.entity.get("text", ""),
                         "metadata": hit.entity.get("metadata", {}),
+                        "source_database": hit.entity.get("source_database", ""),
+                        "source_schema": hit.entity.get("source_schema", ""),
                         "source_table": hit.entity.get("source_table", ""),
                         "source_id": hit.entity.get("source_id", ""),
                         "embedding_model": hit.entity.get("embedding_model", ""),
@@ -498,6 +514,8 @@ class VectorStoreManager:
     async def ingest_sql_data(self, 
                             table_data: List[Dict],
                             embeddings: List[List[float]],
+                            database_name: str,
+                            schema_name: str,
                             table_name: str,
                             collection_name: str = "documents") -> bool:
         """
@@ -538,12 +556,14 @@ class VectorStoreManager:
                 vectors=embeddings,
                 texts=texts,
                 metadata=metadata,
+                source_database=database_name,
+                source_schema=schema_name,
                 source_table=table_name,
                 source_ids=source_ids
             )
             
             if success:
-                logger.info(f"Successfully ingested {len(table_data)} records from {table_name}")
+                logger.info(f"Successfully ingested {len(table_data)} records from {database_name}.{schema_name}.{table_name}")
             
             return success
             
